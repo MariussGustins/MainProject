@@ -54,6 +54,7 @@
 
 .content{
     text-align: center;
+
 }
 
 /* Style for the left container */
@@ -105,4 +106,5 @@ body {
     background-color: #4b4b4b;
     overflow-x: hidden!important;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
