@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+
+</div>
+<link rel="stylesheet" href="gallery.css">
+
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <ul class="menu" id="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="minigame.html">MiniGame</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="gallery.html">Gallery/Code</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="other_projects.html">Other projects</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- Left container -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="describe">
+                <div class="text">
+                    <h2>MiniGame(index)</h2>
+                    <p>Šeit ir spēles index lapa, kur atrodas navbar jeb menu(visām lapām tāds ir), kā ari canva un start poga lai sāktu spēli</p>
+                    <a href="https://github.com/MariussGustins/MainProject/blob/ebf7aed205a088ceb4f50de922ae92b47caebd9a/Gala_darbs/minigame.html"><b>Kods</b></a>
+                </div>
+                <div class="image">
+                    <img src="images/minigame_index.png" alt="Par index.html">
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="describe">
+                <div class="text">
+                    <h2>MiniGame(js)</h2>
+                    <p>Šajā slaidā varam redzēt javascript kodu, kur tiek veiktas attiecīgās funckijas un darbības, kas ļauj mums spēlēt spēli</p>
+                    <a href="https://github.com/MariussGustins/MainProject/blob/ebf7aed205a088ceb4f50de922ae92b47caebd9a/Gala_darbs/script.js"><b>Kods</b></a>
+                </div>
+                <div class="image">
+                    <img src="images/script.png" alt="Par script">
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="describe">
+                <div class="text">
+                    <h2>MiniGame(css)</h2>
+                    <p>Šeit ir attēlots css kods priekš menu, takā minigame tiek veidots izmantojot canva un draw funckciju css nav nepieciešams</p>
+                    <a href="https://github.com/MariussGustins/MainProject/blob/ebf7aed205a088ceb4f50de922ae92b47caebd9a/Gala_darbs/navbar.css"><b>Kods</b></a>
+                </div>
+                <div class="image">
+                    <img src="images/style.png" alt="Par style">
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+</div>
+
+
+</body>
+</html>
