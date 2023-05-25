@@ -58,3 +58,60 @@ startButton.addEventListener('click', () => {
         }, interval);
     }
 });
+
+const profileUsername = document.getElementById('profile-username');
+const profileScore = document.getElementById('profile-score');
+const topScoresTable = document.getElementById('top-scores');
+
+let username = '';
+
+function saveScoreToDatabase() {
+    // Send an AJAX request to save the score to the database
+    // Replace the URL with the endpoint to save the score
+    const url = 'save_score_endpoint';
+
+    // Replace the method and headers as per your server-side implementation
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            score: score,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response if needed
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle the error if needed
+            console.error(error);
+        });
+}
+
+startButton.addEventListener('click', () => {
+    // Prompt the user to enter a username for the profile
+    username = prompt('Enter your username:');
+    profileUsername.textContent = `Username: ${username}`;
+
+    // Existing code...
+
+    if (((birdY < topPipeBottomY || birdY > topPipeBottomY + pipeGap) && pipeX < birdSize * 2)
+        || birdY > canvasSize) {
+        // Bird died
+        birdDY = 0;
+        gameOver = true;
+        gameRunning = false;
+        // Display "Game Over"
+        context.fillStyle = "red";
+        context.fillText("Game Over", canvasSize/2 - 80, canvasSize/2);
+
+        // Save the score to the database
+        saveScoreToDatabase();
+
+        clearInterval(intervalId);
+    }
+});
