@@ -17,10 +17,23 @@ $data = json_decode(file_get_contents('php://input'));
 $username = $data->username;
 $score = $data->score;
 
+// Check if the user exists or create a new user
+$stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+$stmt->execute([$username]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    $stmt = $pdo->prepare("INSERT INTO users (username) VALUES (?)");
+    $stmt->execute([$username]);
+    $userId = $pdo->lastInsertId();
+} else {
+    $userId = $user['id'];
+}
+
 // Insert the score into the database
-$sql = "INSERT INTO scores (username, score) VALUES (?, ?)";
+$sql = "INSERT INTO scores (user_id, score) VALUES (?, ?)";
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$username, $score]);
+$stmt->execute([$userId, $score]);
 
 // Return a response if needed
 $response = ['message' => 'Score saved successfully'];

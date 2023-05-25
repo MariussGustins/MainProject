@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>User Profile</title>
-  <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 <header class="header">
@@ -11,6 +10,10 @@
 </header>
 <div class="wrapper">
   <h1>User Profile</h1>
+  <form id="registration-form">
+    <input type="text" id="username-input" placeholder="Enter username">
+    <button type="submit">Register</button>
+  </form>
   <h3 id="profile-username"></h3>
   <p id="profile-score"></p>
   <h2>Top Scores</h2>
@@ -27,6 +30,6 @@
   </table>
 </div>
 
-<script src="profile.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
