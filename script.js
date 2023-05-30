@@ -1,19 +1,3 @@
-const registrationForm = document.getElementById('registration-form');
-const usernameInput = document.getElementById('username-input');
-const profileUsername = document.getElementById('profile-username');
-const profileScore = document.getElementById('profile-score');
-const topScoresTable = document.getElementById('top-scores');
-
-let username = '';
-
-registrationForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    username = usernameInput.value;
-    profileUsername.textContent = `Username: ${username}`;
-    registrationForm.reset();
-});
-
-
 let intervalId;
 const startButton = document.querySelector('#start-button');
 
@@ -29,37 +13,10 @@ let gameRunning = false;
 let gameOver = false;
 c.onclick = () => (birdDY = 9);
 
-
-function saveScoreToDatabase() {
-    // Send an AJAX request to save the score to the database
-    // Replace the URL with the endpoint to save the score
-    const url = 'save_score.php';
-
-    // Replace the method and headers as per your server-side implementation
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: username,
-            score: score,
-        }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response if needed
-            console.log(data);
-        })
-        .catch(error => {
-            // Handle the error if needed
-            console.error(error);
-        });
-}
 startButton.addEventListener('click', () => {
-    if (!username) {
-        alert('Please register a username first.');
-        return;
+    const playerName = prompt("Enter your name:");
+    if (playerName) {
+        localStorage.setItem('playerName', playerName);
     }
 
     if (gameOver) {
@@ -101,11 +58,15 @@ startButton.addEventListener('click', () => {
                 // Display "Game Over"
                 context.fillStyle = "red";
                 context.fillText("Game Over", canvasSize / 2 - 80, canvasSize / 2);
-                saveScoreToDatabase(); // Save the score to the database
                 clearInterval(intervalId);
+
+                const playerName = localStorage.getItem('playerName');
+                const playerScore = bestScore;
+                localStorage.setItem('playerScore', playerScore);
+
+                // Open a new HTML page to display player's data
+                window.open('score.html', '_blank');
             }
         }, interval);
     }
 });
-
-
