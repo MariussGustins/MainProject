@@ -62,11 +62,16 @@ startButton.addEventListener('click', () => {
 
                 const playerName = localStorage.getItem('playerName');
                 const playerScore = bestScore;
-                localStorage.setItem('playerScore', playerScore);
+                const playerData = { name: playerName, score: playerScore };
 
-                // Open a new HTML page to display player's data
-                window.open('score.html', '_blank');
+                savePlayerData(playerData);
             }
         }, interval);
     }
 });
+
+function savePlayerData(playerData) {
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    scores.push(playerData);
+    localStorage.setItem('scores', JSON.stringify(scores));
+}

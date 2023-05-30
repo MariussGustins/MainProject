@@ -8,7 +8,7 @@
 <div class="content">
 
 </div>
-<link rel="stylesheet" href="gallery.css">
+<link rel="stylesheet" href="score.css">
 
 <header class="header">
   <nav class="navbar">
@@ -33,19 +33,20 @@
     </div>
   </nav>
 </header>
-<h1>Player Score</h1>
-<p id="player-name"></p>
-<p id="player-score"></p>
 
-<script>
-  const playerName = localStorage.getItem('playerName');
-  const playerScore = localStorage.getItem('playerScore');
+<h1>Player Scores</h1>
 
-  const playerNameElement = document.querySelector('#player-name');
-  playerNameElement.textContent = `Player Name: ${playerName}`;
+<table>
+  <thead>
+  <tr>
+    <th>Player Name</th>
+    <th>Score</th>
+  </tr>
+  </thead>
+  <tbody id="score-table">
+  </tbody>
+</table>
 
-  const playerScoreElement = document.querySelector('#player-score');
-  playerScoreElement.textContent = `Player Score: ${playerScore}`;
-</script>
+<script src="score.js"></script>
 </body>
 </html>
